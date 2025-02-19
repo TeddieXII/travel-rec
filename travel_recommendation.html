@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Recommendations</title>
+    <style>
+        body {
+            background-image: url('background.jpg'); /* Replace with actual background image */
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: white;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px 20px;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+        .navbar input {
+            padding: 5px;
+            font-size: 16px;
+        }
+        .navbar button {
+            padding: 5px 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .container {
+            text-align: center;
+            padding: 100px 20px;
+        }
+        .results {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .card {
+            background: rgba(0, 0, 0, 0.6);
+            margin: 15px;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 300px;
+        }
+        .card img {
+            width: 100%;
+            height: 200px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div>
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+        <div>
+            <input type="text" id="searchBox" placeholder="Search for recommendations...">
+            <button onclick="searchRecommendations()">Search</button>
+            <button onclick="clearResults()">Reset</button>
+        </div>
+    </div>
+
+    <!-- Home Page -->
+    <div class="container">
+        <h1>Welcome to Travel Recommendations</h1>
+        <p>Find the best places to visit based on your interests.</p>
+    </div>
+
+    <!-- Results Section -->
+    <div class="results" id="results"></div>
+
+    <script>
+        const apiData = {
+            countries: [
+                { 
+                    id: 1, name: "Australia", 
+                    cities: [
+                        { name: "Sydney, Australia", imageUrl: "enter_your_image_for_sydney.jpg", description: "A vibrant city known for its iconic landmarks like the Sydney Opera House and Sydney Harbour Bridge." },
+                        { name: "Melbourne, Australia", imageUrl: "enter_your_image_for_melbourne.jpg", description: "A cultural hub famous for its art, food, and diverse neighborhoods." }
+                    ]
+                },
+                { 
+                    id: 2, name: "Japan", 
+                    cities: [
+                        { name: "Tokyo, Japan", imageUrl: "enter_your_image_for_tokyo.jpg", description: "A bustling metropolis blending tradition and modernity, famous for its cherry blossoms and rich culture." },
+                        { name: "Kyoto, Japan", imageUrl: "enter_your_image_for_kyoto.jpg", description: "Known for its historic temples, gardens, and traditional tea houses." }
+                    ]
+                },
+                { 
+                    id: 3, name: "Brazil", 
+                    cities: [
+                        { name: "Rio de Janeiro, Brazil", imageUrl: "enter_your_image_for_rio.jpg", description: "A lively city known for its stunning beaches, vibrant carnival celebrations, and iconic landmarks." },
+                        { name: "São Paulo, Brazil", imageUrl: "enter_your_image_for_sao-paulo.jpg", description: "The financial hub with diverse culture, arts, and a vibrant nightlife." }
+                    ]
+                }
+            ],
+            temples: [
+                { id: 1, name: "Angkor Wat, Cambodia", imageUrl: "enter_your_image_for_angkor-wat.jpg", description: "A UNESCO World Heritage site and the largest religious monument in the world." },
+                { id: 2, name: "Taj Mahal, India", imageUrl: "enter_your_image_for_taj-mahal.jpg", description: "An iconic symbol of love and a masterpiece of Mughal architecture." }
+            ],
+            beaches: [
+                { id: 1, name: "Bora Bora, French Polynesia", imageUrl: "enter_your_image_for_bora-bora.jpg", description: "An island known for its stunning turquoise waters and luxurious overwater bungalows." },
+                { id: 2, name: "Copacabana Beach, Brazil", imageUrl: "enter_your_image_for_copacabana.jpg", description: "A famous beach in Rio de Janeiro, Brazil, with a vibrant atmosphere and scenic views." }
+            ]
+        };
+
+        function searchRecommendations() {
+            const keyword = document.getElementById("searchBox").value.toLowerCase();
+            const resultsContainer = document.getElementById("results");
+            resultsContainer.innerHTML = "";
+
+            let results = [];
+
+            // Search in cities
+            apiData.countries.forEach(country => {
+                country.cities.forEach(city => {
+                    if (city.name.toLowerCase().includes(keyword)) {
+                        results.push(city);
+                    }
+                });
+            });
+
+            // Search in temples
+            apiData.temples.forEach(temple => {
+                if (temple.name.toLowerCase().includes(keyword)) {
+                    results.push(temple);
+                }
+            });
+
+            // Search in beaches
+            apiData.beaches.forEach(beach => {
+                if (beach.name.toLowerCase().includes(keyword)) {
+                    results.push(beach);
+                }
+            });
+
+            // Display results
+            if (results.length > 0) {
+                results.forEach(item => {
+                    const card = document.createElement("div");
+                    card.classList.add("card");
+                    card.innerHTML = `
+                        <img src="${item.imageUrl}" alt="${item.name}">
+                        <h3>${item.name}</h3>
+                        <p>${item.description}</p>
+                    `;
+                    resultsContainer.appendChild(card);
+                });
+            } else {
+                resultsContainer.innerHTML = "<p style='text-align: center;'>No results found.</p>";
+            }
+        }
+
+        function clearResults() {
+            document.getElementById("searchBox").value = "";
+            document.getElementById("results").innerHTML = "";
+        }
+    </script>
+
+</body>
+</html>
