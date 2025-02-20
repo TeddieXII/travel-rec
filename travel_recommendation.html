@@ -3,176 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travel Recommendations</title>
-    <style>
-        body {
-            background-image: url('background.jpg'); /* Replace with actual background image */
-            background-size: cover;
-            background-position: center;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            color: white;
-        }
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 15px 20px;
-        }
-        .navbar a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 18px;
-        }
-        .navbar input {
-            padding: 5px;
-            font-size: 16px;
-        }
-        .navbar button {
-            padding: 5px 10px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-        .container {
-            text-align: center;
-            padding: 100px 20px;
-        }
-        .results {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-top: 20px;
-        }
-        .card {
-            background: rgba(0, 0, 0, 0.6);
-            margin: 15px;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            width: 300px;
-        }
-        .card img {
-            width: 100%;
-            height: 200px;
-            border-radius: 5px;
-        }
-    </style>
+    <title>Travel Bloom</title>
+    <link rel="stylesheet" href="styles.css">   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
+    <script src="script.js"></script>
 
-    <!-- Navbar -->
-    <div class="navbar">
-        <div>
-            <a href="index.html">Home</a>
-            <a href="about.html">About Us</a>
-            <a href="contact.html">Contact Us</a>
+    <header>
+        <div class="topnav">
+            <div id="logo"><img src="TravelBloomLogo.png" alt="Travel Bloom Logo"> </div>
+            <nav>
+                <a class="active" href="#home">Home</a>
+                <a href="#about">About Us</a>
+                <a href="#contact">Contact Us</a>
+            </nav>
         </div>
-        <div>
-            <input type="text" id="searchBox" placeholder="Search for recommendations...">
-            <button onclick="searchRecommendations()">Search</button>
-            <button onclick="clearResults()">Reset</button>
+    </header>
+
+    <div>
+        <input type="text" id="searchInput" placeholder="Enter a destination or keyword">
+        <button type="submit" id="searchButton"><i class="fas fa-search"></i> Search</button>
+        <button type="reset" id="clearButton">Clear</button>
+    </div>
+    
+    <!-- Results will be dynamically added below -->
+    <div id="searchResults"></div>
+    
+
+    <div class="social-sidebar">
+        <a href="https://facebook.com" target="_blank" class="social-icon">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://instagram.com" target="_blank" class="social-icon">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://twitter.com" target="_blank" class="social-icon">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://linkedin.com" target="_blank" class="social-icon">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+    </div>
+    
+    <section id="home" class="content">
+        <h1>EXPLORE<br>DREAM<br>DESTINATION</h1>
+        <div class="container">
+            <p>It encourages exploration of unfamiliar
+                <br>territories, embracing diverse cultures and
+                <br>landscapes, while pursuing the desired
+                <br>destination that captivates the heart and
+                <br>ignites a sense of wonder.
+            </p>
+            <button type="button" onclick="">Book Now</button>
         </div>
-    </div>
+    </section>
 
-    <!-- Home Page -->
-    <div class="container">
-        <h1>Welcome to Travel Recommendations</h1>
-        <p>Find the best places to visit based on your interests.</p>
-    </div>
+    <section id="about" class="content">
+        <h1>About Us</h1>
+        <div id="main-container" class="container">
+            <p>Welcome to our Company! We are a team of passionate individuals dedicated to providing excellent services/products to our customers. 
+                <br>Our mission is to <strong>provide the best experience for people</strong> travelling to different destinations around the world.
+                <br>Our values include integrity, innovation, customer satisfaction and teamwork.
+                <br>We believe in <strong>putting our customers first</strong> and <strong>working together</strong> to achieveour goals.
+                <br>Feel free to explore our website to learn more about what we offer!</p>
+        </div>
 
-    <!-- Results Section -->
-    <div class="results" id="results"></div>
+        <h2>Our Team</h2>
+        <div>
+            <div>
+                <img src="ceo.png" alt="ceo">
+                <h3>Will Smith</h3>
+                <p>A visionary leader who drives the company's mission and long-term strategy. 
+                    <br> Will is innovative, decisive, and passionate about growth, ensuring Travel Bloom remains competitive in the travel industry.</p>
+                <button>CEO</button>
+            </div>
+            <div>
+                <img src="team-lead.png" alt="team lead">
+                <h3>Jaden Smith</h3>
+                <p>A highly organized and motivated individual who bridges the gap between management and employees. 
+                    <br> Jaden ensures smooth collaboration, assigns tasks, and keeps projects on track, fostering a productive work environment.</p>
+                <button>Team Lead</button>
+            </div>
+            <div>       
+                <img src="delivery-head.png" alt="delivery head">
+                <h3>Willow Smith</h3>
+                <p>Detail-oriented and customer-focused, Willow oversees service execution and ensures clients receive top-quality experiences. 
+                    <br> She manages logistics, optimizes processes, and ensures timely and efficient service delivery.</p>
+                <button>Delivery Head</button>
+            </div>
+        </div>
+    </section>
 
-    <script>
-        const apiData = {
-            countries: [
-                { 
-                    id: 1, name: "Australia", 
-                    cities: [
-                        { name: "Sydney, Australia", imageUrl: "enter_your_image_for_sydney.jpg", description: "A vibrant city known for its iconic landmarks like the Sydney Opera House and Sydney Harbour Bridge." },
-                        { name: "Melbourne, Australia", imageUrl: "enter_your_image_for_melbourne.jpg", description: "A cultural hub famous for its art, food, and diverse neighborhoods." }
-                    ]
-                },
-                { 
-                    id: 2, name: "Japan", 
-                    cities: [
-                        { name: "Tokyo, Japan", imageUrl: "enter_your_image_for_tokyo.jpg", description: "A bustling metropolis blending tradition and modernity, famous for its cherry blossoms and rich culture." },
-                        { name: "Kyoto, Japan", imageUrl: "enter_your_image_for_kyoto.jpg", description: "Known for its historic temples, gardens, and traditional tea houses." }
-                    ]
-                },
-                { 
-                    id: 3, name: "Brazil", 
-                    cities: [
-                        { name: "Rio de Janeiro, Brazil", imageUrl: "enter_your_image_for_rio.jpg", description: "A lively city known for its stunning beaches, vibrant carnival celebrations, and iconic landmarks." },
-                        { name: "São Paulo, Brazil", imageUrl: "enter_your_image_for_sao-paulo.jpg", description: "The financial hub with diverse culture, arts, and a vibrant nightlife." }
-                    ]
-                }
-            ],
-            temples: [
-                { id: 1, name: "Angkor Wat, Cambodia", imageUrl: "enter_your_image_for_angkor-wat.jpg", description: "A UNESCO World Heritage site and the largest religious monument in the world." },
-                { id: 2, name: "Taj Mahal, India", imageUrl: "enter_your_image_for_taj-mahal.jpg", description: "An iconic symbol of love and a masterpiece of Mughal architecture." }
-            ],
-            beaches: [
-                { id: 1, name: "Bora Bora, French Polynesia", imageUrl: "enter_your_image_for_bora-bora.jpg", description: "An island known for its stunning turquoise waters and luxurious overwater bungalows." },
-                { id: 2, name: "Copacabana Beach, Brazil", imageUrl: "enter_your_image_for_copacabana.jpg", description: "A famous beach in Rio de Janeiro, Brazil, with a vibrant atmosphere and scenic views." }
-            ]
-        };
+    <section id="contact" class="content">
+        <div>
+            <h1>Contact Us</h1>
+            <p>Get in Touch</p>
 
-        function searchRecommendations() {
-            const keyword = document.getElementById("searchBox").value.toLowerCase();
-            const resultsContainer = document.getElementById("results");
-            resultsContainer.innerHTML = "";
+            <form action="" method="post">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
 
-            let results = [];
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email" placeholder="Enter your email" required>
 
-            // Search in cities
-            apiData.countries.forEach(country => {
-                country.cities.forEach(city => {
-                    if (city.name.toLowerCase().includes(keyword)) {
-                        results.push(city);
-                    }
-                });
-            });
+                <label for="message">Message:</label>
+                <textarea name="message" id="message" placeholder="Enter your message" required></textarea>
 
-            // Search in temples
-            apiData.temples.forEach(temple => {
-                if (temple.name.toLowerCase().includes(keyword)) {
-                    results.push(temple);
-                }
-            });
-
-            // Search in beaches
-            apiData.beaches.forEach(beach => {
-                if (beach.name.toLowerCase().includes(keyword)) {
-                    results.push(beach);
-                }
-            });
-
-            // Display results
-            if (results.length > 0) {
-                results.forEach(item => {
-                    const card = document.createElement("div");
-                    card.classList.add("card");
-                    card.innerHTML = `
-                        <img src="${item.imageUrl}" alt="${item.name}">
-                        <h3>${item.name}</h3>
-                        <p>${item.description}</p>
-                    `;
-                    resultsContainer.appendChild(card);
-                });
-            } else {
-                resultsContainer.innerHTML = "<p style='text-align: center;'>No results found.</p>";
-            }
-        }
-
-        function clearResults() {
-            document.getElementById("searchBox").value = "";
-            document.getElementById("results").innerHTML = "";
-        }
-    </script>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </section>
 
 </body>
 </html>
