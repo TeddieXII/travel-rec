@@ -1,0 +1,264 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body {
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 2px 30px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.topnav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+#logo img {
+    height: 150px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+}
+
+.topnav nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.topnav nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.topnav nav a:hover {
+    color: #0077cc;
+}
+
+#searchInput {
+    padding: 8px 16px;
+    width: 280px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+#searchButton, #clearButton {
+    padding: 8px 14px;
+    font-size: 1rem;
+    background-color: #0077cc;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#clearButton {
+    background-color: #999;
+}
+
+#searchButton i {
+    margin-right: 6px;
+}
+
+.social-sidebar {
+    position: fixed;
+    top: 45%;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 99;
+    background-color: white;
+    padding: 10px;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.social-icon {
+    color: black;
+    font-size: 1.2rem;
+    padding: 5px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+.social-icon:hover {
+    background: linear-gradient(to top, rgb(30, 240, 255), #0077cc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.hero {
+    background-image: url('background.png');
+    background-size: cover;
+    background-position: center;
+    height: 90vh;
+    color: white;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 0 40px;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+.hero h1,
+.hero .container {
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1 {
+    font-size: 3.2rem;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.hero .container p {
+    font-size: 1.2rem;
+    max-width: 750px;
+    margin: 0 auto 30px;
+    line-height: 1.8;
+}
+
+.hero button {
+    padding: 8px 14px;
+    font-size: 1rem;
+    background-color: #0077cc;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.hero button:hover {
+    background-color: #005fa3;
+}
+
+.content {
+    padding: 70px 40px;
+    background-color: #ffffff;
+}
+
+.content h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
+.content p {
+    font-size: 1.1rem;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 1.7;
+}
+
+#about h2 {
+    text-align: center;
+    margin: 60px 0 30px;
+    font-size: 2rem;
+}
+
+#about > div:last-child {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+#about > div:last-child > div {
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 300px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    flex: 1;
+    min-width: 250px;
+}
+
+#about img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    margin-bottom: 15px;
+}
+
+#about h3 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+#about button {
+    margin-top: 10px;
+    padding: 6px 12px;
+    background-color: #0077cc;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+
+#contact form {
+    max-width: 600px;
+    margin: 30px auto 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#contact label {
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+#contact input,
+#contact textarea {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    resize: vertical;
+}
+
+#contact button {
+    align-self: flex-start;
+    padding: 10px 20px;
+    background-color: #0077cc;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+#contact button:hover {
+    background-color: #005fa3;
+}
